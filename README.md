@@ -1,7 +1,7 @@
 # InitiatRequest
 Http请求小工具
 
-
+> 学习交流，HttpWebRequest
 
  
 
