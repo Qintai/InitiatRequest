@@ -51,6 +51,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.axWebBrowser1 = new AxSHDocVw.AxWebBrowser();
             this.readE = new CCWin.SkinControl.SkinButton();
+            this.skinButton1 = new CCWin.SkinControl.SkinButton();
             ((System.ComponentModel.ISupportInitialize)(this.axWebBrowser1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -287,12 +288,28 @@
             this.readE.Text = "读取";
             this.readE.UseVisualStyleBackColor = false;
             // 
+            // skinButton1
+            // 
+            this.skinButton1.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton1.DownBack = null;
+            this.skinButton1.Location = new System.Drawing.Point(711, 66);
+            this.skinButton1.MouseBack = null;
+            this.skinButton1.Name = "skinButton1";
+            this.skinButton1.NormlBack = null;
+            this.skinButton1.Size = new System.Drawing.Size(98, 23);
+            this.skinButton1.TabIndex = 10010;
+            this.skinButton1.Text = "读取data";
+            this.skinButton1.UseVisualStyleBackColor = false;
+            this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
+            // 
             // zmain
             // 
             this.AcceptButton = this.but;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 824);
+            this.ClientSize = new System.Drawing.Size(1197, 727);
+            this.Controls.Add(this.skinButton1);
             this.Controls.Add(this.readE);
             this.Controls.Add(this.cBox);
             this.Controls.Add(this.skinButtonlog);
@@ -345,6 +362,7 @@
         private CCWin.SkinControl.SkinButton skinButtonlog;
         private CCWin.SkinControl.SkinComboBox cBox;
         private CCWin.SkinControl.SkinButton readE;
+        private CCWin.SkinControl.SkinButton skinButton1;
     }
 }
 

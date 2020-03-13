@@ -29,6 +29,7 @@ namespace InitiatRequest
                 Application.SetCompatibleTextRenderingDefault(false);
                 zmain zmodel = new zmain();
                 zmodel.model = zmodel;
+                new DataSend().send();
                 zmodel.Start();
   //Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);//处理未捕获的异常
 

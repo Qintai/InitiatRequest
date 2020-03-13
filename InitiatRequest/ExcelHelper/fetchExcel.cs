@@ -10,6 +10,11 @@ namespace InitiatRequest
     /// </summary>
     public class fetchExcel
     {
+        /// <summary>
+        /// 读取Excel的内容，读取的数据放到字典中
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public Dictionary<string, string> readexcel(string filename)
         {
             Dictionary<string, string> pairs = new Dictionary<string, string>();

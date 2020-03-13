@@ -380,5 +380,21 @@ namespace InitiatRequest
              });
         }
 
+        private void skinButton1_Click(object sender, EventArgs e)
+        {
+            dor=new DataSend().readsqll();
+            foreach (var item in dor)
+            {
+                if (!cBox.Items.Contains(item.Key))
+                    cBox.Items.Add(item.Key);
+            }
+            if (dor.Count == 0)
+            {
+                //默认值
+                action.Text = "http://bgtest.vzan.com/nlive/GetTopicanalysis?zid=75999&tid=140789540";  //
+                txt_cook.Text = @"UserCookieNew,52359ffe-a9ec-4ac9-b887-b5e30af0273f;";
+            }
+
+        }
     }
 }
