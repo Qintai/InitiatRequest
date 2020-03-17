@@ -29,20 +29,24 @@ namespace InitiatRequest
                 Application.SetCompatibleTextRenderingDefault(false);
                 zmain zmodel = new zmain();
                 zmodel.model = zmodel;
+
+                JsonModel jsonModel = new JsonModel() { Name="55"};
+                string jstring = Newtonsoft.Json.JsonConvert.SerializeObject(jsonModel);
+
                 new DataSend().send();
                 zmodel.Start();
-  //Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);//处理未捕获的异常
+                //Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);//处理未捕获的异常
 
                 //处理UI线程异常
                 Application.ThreadException += new ThreadExceptionEventHandler(
-                    (sender, e)=> 
+                    (sender, e) =>
                     {
                         //log4helper<Application>.Errror(e.Exception);
                         MessageBox.Show(/*"出现异常！请查看日志"+*/ e.Exception.Message);
                     });
 
                 //处理非UI线程异常
-                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((sender,e)=>  {});
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((sender, e) => { });
                 Application.Run(zmodel);
             }
             catch (Exception e)
