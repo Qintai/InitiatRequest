@@ -44,8 +44,7 @@
       <HintPath>bin\Debug\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="CSkin, Version=16.1.14.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CSkin.dll</HintPath>
+      <HintPath>packages\cskin.16.1.14.3\lib\net40\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
