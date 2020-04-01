@@ -53,7 +53,7 @@ namespace InitiatRequest
             {
                 log4helper<Application>.Errror(e);
                 MessageBox.Show("出现异常！请查看日志");
-                return;
+                return; ;
             } 
         }
 
