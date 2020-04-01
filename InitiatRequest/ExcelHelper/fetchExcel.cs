@@ -48,8 +48,7 @@ namespace InitiatRequest
                         }
                         catch (Exception e)
                         {
-                            log4helper<ReadExcel>.Info($"在第{r}行的第{col}列没有数据，引发异常！");
-                            log4helper<ReadExcel>.Errror(e);
+                            log4helper<ReadExcel>.Debug($"读取Excel错误【第{r}行的第{col}列没有数据，引发异常！】=【{e.Message}】");
                             break;
                         }
                     }
