@@ -3,10 +3,7 @@ using System.Reflection;
 
 namespace InitiatRequest
 {
-    public class MyTool
-    {
-
-    }
+    // 3个类：Error-Executing-Executed
 
     /// <summary>
     /// 方法中发生错误调用
@@ -62,5 +59,7 @@ namespace InitiatRequest
             string a = "";
         }
     }
+
+
 
 }

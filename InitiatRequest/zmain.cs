@@ -185,7 +185,7 @@ namespace InitiatRequest
                     string[] cks = txt_cook.Text.Split(';');
                     foreach (string item in cks)
                     {
-                        string[] mm = item.Split(',');
+                        string[] mm = item.Split('=');
                         if (mm.Length == 2)
                             dir.Add(mm[0], mm[1]);
                     }
@@ -380,6 +380,11 @@ namespace InitiatRequest
              });
         }
 
+        /// <summary>
+        /// 读取数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void skinButton1_Click(object sender, EventArgs e)
         {
             dor=new DataSend().readsqll();
@@ -394,6 +399,11 @@ namespace InitiatRequest
                 action.Text = "http://bgtest.vzan.com/nlive/GetTopicanalysis?zid=75999&tid=140789540";  //
                 txt_cook.Text = @"UserCookieNew,52359ffe-a9ec-4ac9-b887-b5e30af0273f;";
             }
+
+        }
+
+        private void zmain_Load(object sender, EventArgs e)
+        {
 
         }
     }

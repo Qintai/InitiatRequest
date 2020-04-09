@@ -86,16 +86,16 @@
   <ItemGroup>
     <Compile Include="DataSend\DataSend.cs" />
     <Compile Include="ExcelHelper\fetchExcel.cs" />
-    <Compile Include="JsonModel.cs" />
-    <Compile Include="MyTool.cs" />
-    <Compile Include="log4helper.cs" />
+    <Compile Include="Model\JsonModel.cs" />
+    <Compile Include="CustomAttribute\CustomAttrbute.cs" />
+    <Compile Include="Log4net\log4helper.cs" />
     <Compile Include="ReadExcel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReadExcel.Designer.cs">
       <DependentUpon>ReadExcel.cs</DependentUpon>
     </Compile>
-    <Compile Include="TypeTest.cs" />
+    <Compile Include="Model\TypeTest.cs" />
     <Compile Include="zmain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,8 +120,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Config\log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Log4net\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -157,7 +157,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Aspose.Cells.dll" />
     <Content Include="default.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

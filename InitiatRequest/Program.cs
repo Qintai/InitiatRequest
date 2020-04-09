@@ -15,7 +15,7 @@ namespace InitiatRequest
         static void Main()
         {
             #region 启动日志
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Config\\Log4net.config";
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log4net\\Log4net.config";
             if (!File.Exists(filePath))
                 throw new Exception($"没找到配置文件");
             FileInfo fileInfo = new FileInfo(filePath);

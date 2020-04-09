@@ -11,8 +11,6 @@ namespace InitiatRequest
 
         static ISqlSugarClient sclient = new SqlSugarClient(new ConnectionConfig()
         {
-            //这个地方还需要换成，当前目录！！！
-            ConnectionString = @"DataSource=F:\VSGitHub\InitiatRequest\InitiatRequest\bin\dat.db",
             DbType = (SqlSugar.DbType)DbType.Sqlite,//设置数据库类型
             IsAutoCloseConnection = true,//自动释放数据务，如果存在事务，在事务结束后释放
             InitKeyType = InitKeyType.Attribute //从实体特性中读取主键自增列信息
@@ -20,6 +18,8 @@ namespace InitiatRequest
 
         public void send()
         {
+            sclient.CurrentConnectionConfig.ConnectionString = "DataSource=" + System.Environment.CurrentDirectory + @"\dat.db";
+
             sclient.DbMaintenance.CreateDatabase(); //创建数据库
             sclient.CodeFirst.InitTables(typeof(ConfigTable));
             SimpleClient simpleClient = new SimpleClient(sclient);
@@ -39,7 +39,7 @@ namespace InitiatRequest
             {
                 try
                 {
-                    keyValuePairs.Add(item.Name,item.Url);
+                    keyValuePairs.Add(item.Name, item.Url);
                 }
                 catch (Exception)
                 {
@@ -50,16 +50,16 @@ namespace InitiatRequest
         }
     }
 
-   public class ConfigTable
+    public class ConfigTable
     {
         [SugarColumn]
-        public string Name { get;  set; }
+        public string Name { get; set; }
 
         [SugarColumn]
-        public string Url { get;  set; }
+        public string Url { get; set; }
 
         [SugarColumn]
-        public DateTime AddTime { get;  set; }
+        public DateTime AddTime { get; set; }
 
     }
 }

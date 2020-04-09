@@ -52,30 +52,32 @@
             this.axWebBrowser1 = new AxSHDocVw.AxWebBrowser();
             this.readE = new CCWin.SkinControl.SkinButton();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
+            this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
             ((System.ComponentModel.ISupportInitialize)(this.axWebBrowser1)).BeginInit();
             this.SuspendLayout();
             // 
             // accept
             // 
-            this.accept.Location = new System.Drawing.Point(117, 201);
+            this.accept.Location = new System.Drawing.Point(19, 300);
             this.accept.Name = "accept";
             this.accept.Size = new System.Drawing.Size(254, 21);
             this.accept.TabIndex = 1;
             // 
             // textBo_heads
             // 
-            this.textBo_heads.Location = new System.Drawing.Point(117, 327);
+            this.textBo_heads.Location = new System.Drawing.Point(19, 454);
             this.textBo_heads.Multiline = true;
             this.textBo_heads.Name = "textBo_heads";
-            this.textBo_heads.Size = new System.Drawing.Size(254, 155);
+            this.textBo_heads.Size = new System.Drawing.Size(335, 127);
             this.textBo_heads.TabIndex = 4;
+            this.textBo_heads.Text = "Cache-Control:no-cache; X-Requested-With:XMLHttpRequest;";
             // 
             // but
             // 
             this.but.BackColor = System.Drawing.Color.Transparent;
             this.but.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.but.DownBack = null;
-            this.but.Location = new System.Drawing.Point(25, 135);
+            this.but.Location = new System.Drawing.Point(163, 251);
             this.but.MouseBack = null;
             this.but.Name = "but";
             this.but.NormlBack = null;
@@ -90,7 +92,7 @@
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel1.BorderColor = System.Drawing.Color.White;
             this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel1.Location = new System.Drawing.Point(22, 201);
+            this.skinLabel1.Location = new System.Drawing.Point(19, 280);
             this.skinLabel1.Name = "skinLabel1";
             this.skinLabel1.Size = new System.Drawing.Size(59, 17);
             this.skinLabel1.TabIndex = 5;
@@ -98,7 +100,7 @@
             // 
             // contentType
             // 
-            this.contentType.Location = new System.Drawing.Point(117, 241);
+            this.contentType.Location = new System.Drawing.Point(21, 350);
             this.contentType.Name = "contentType";
             this.contentType.Size = new System.Drawing.Size(254, 21);
             this.contentType.TabIndex = 2;
@@ -109,7 +111,7 @@
             this.laio.BackColor = System.Drawing.Color.Transparent;
             this.laio.BorderColor = System.Drawing.Color.White;
             this.laio.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.laio.Location = new System.Drawing.Point(19, 245);
+            this.laio.Location = new System.Drawing.Point(18, 330);
             this.laio.Name = "laio";
             this.laio.Size = new System.Drawing.Size(93, 17);
             this.laio.TabIndex = 5;
@@ -117,9 +119,9 @@
             // 
             // host
             // 
-            this.host.Location = new System.Drawing.Point(118, 283);
+            this.host.Location = new System.Drawing.Point(19, 397);
             this.host.Name = "host";
-            this.host.Size = new System.Drawing.Size(253, 21);
+            this.host.Size = new System.Drawing.Size(335, 21);
             this.host.TabIndex = 3;
             // 
             // skinLabel2
@@ -128,7 +130,7 @@
             this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
             this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel2.Location = new System.Drawing.Point(19, 283);
+            this.skinLabel2.Location = new System.Drawing.Point(19, 377);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(47, 17);
             this.skinLabel2.TabIndex = 5;
@@ -140,7 +142,7 @@
             this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel3.BorderColor = System.Drawing.Color.White;
             this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel3.Location = new System.Drawing.Point(19, 384);
+            this.skinLabel3.Location = new System.Drawing.Point(19, 434);
             this.skinLabel3.Name = "skinLabel3";
             this.skinLabel3.Size = new System.Drawing.Size(79, 17);
             this.skinLabel3.TabIndex = 5;
@@ -153,7 +155,7 @@
             this.bpost.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.bpost.DownBack = null;
             this.bpost.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bpost.Location = new System.Drawing.Point(23, 167);
+            this.bpost.Location = new System.Drawing.Point(25, 256);
             this.bpost.MouseBack = null;
             this.bpost.Name = "bpost";
             this.bpost.NormlBack = null;
@@ -173,7 +175,7 @@
             this.skinRadioButton2.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinRadioButton2.DownBack = null;
             this.skinRadioButton2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinRadioButton2.Location = new System.Drawing.Point(98, 167);
+            this.skinRadioButton2.Location = new System.Drawing.Point(100, 256);
             this.skinRadioButton2.MouseBack = null;
             this.skinRadioButton2.Name = "skinRadioButton2";
             this.skinRadioButton2.NormlBack = null;
@@ -188,10 +190,10 @@
             // 
             // txt_cook
             // 
-            this.txt_cook.Location = new System.Drawing.Point(117, 504);
+            this.txt_cook.Location = new System.Drawing.Point(18, 604);
             this.txt_cook.Multiline = true;
             this.txt_cook.Name = "txt_cook";
-            this.txt_cook.Size = new System.Drawing.Size(254, 155);
+            this.txt_cook.Size = new System.Drawing.Size(336, 140);
             this.txt_cook.TabIndex = 5;
             // 
             // skinLabel4
@@ -200,7 +202,7 @@
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(19, 552);
+            this.skinLabel4.Location = new System.Drawing.Point(8, 584);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(58, 17);
             this.skinLabel4.TabIndex = 10000;
@@ -208,10 +210,10 @@
             // 
             // formd
             // 
-            this.formd.Location = new System.Drawing.Point(399, 35);
+            this.formd.Location = new System.Drawing.Point(22, 122);
             this.formd.Multiline = true;
             this.formd.Name = "formd";
-            this.formd.Size = new System.Drawing.Size(287, 81);
+            this.formd.Size = new System.Drawing.Size(371, 81);
             this.formd.TabIndex = 10001;
             // 
             // action
@@ -229,7 +231,7 @@
             this.xiangyin.BorderColor = System.Drawing.Color.White;
             this.xiangyin.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.xiangyin.ForeColor = System.Drawing.Color.Red;
-            this.xiangyin.Location = new System.Drawing.Point(708, 92);
+            this.xiangyin.Location = new System.Drawing.Point(16, 757);
             this.xiangyin.Name = "xiangyin";
             this.xiangyin.Size = new System.Drawing.Size(0, 17);
             this.xiangyin.TabIndex = 10006;
@@ -239,7 +241,7 @@
             this.skinButtonlog.BackColor = System.Drawing.Color.Transparent;
             this.skinButtonlog.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButtonlog.DownBack = null;
-            this.skinButtonlog.Location = new System.Drawing.Point(149, 135);
+            this.skinButtonlog.Location = new System.Drawing.Point(287, 249);
             this.skinButtonlog.MouseBack = null;
             this.skinButtonlog.Name = "skinButtonlog";
             this.skinButtonlog.NormlBack = null;
@@ -252,24 +254,24 @@
             // 
             this.cBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cBox.FormattingEnabled = true;
-            this.cBox.Location = new System.Drawing.Point(688, 38);
+            this.cBox.Location = new System.Drawing.Point(22, 220);
             this.cBox.Name = "cBox";
-            this.cBox.Size = new System.Drawing.Size(448, 22);
+            this.cBox.Size = new System.Drawing.Size(268, 22);
             this.cBox.TabIndex = 10008;
             this.cBox.WaterText = "";
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(395, 122);
+            this.webBrowser1.Location = new System.Drawing.Point(407, 35);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(752, 695);
+            this.webBrowser1.Size = new System.Drawing.Size(813, 739);
             this.webBrowser1.TabIndex = 10004;
             // 
             // axWebBrowser1
             // 
             this.axWebBrowser1.Enabled = true;
-            this.axWebBrowser1.Location = new System.Drawing.Point(7, 678);
+            this.axWebBrowser1.Location = new System.Drawing.Point(222, 844);
             this.axWebBrowser1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWebBrowser1.OcxState")));
             this.axWebBrowser1.Size = new System.Drawing.Size(300, 150);
             this.axWebBrowser1.TabIndex = 10003;
@@ -279,7 +281,7 @@
             this.readE.BackColor = System.Drawing.Color.Transparent;
             this.readE.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.readE.DownBack = null;
-            this.readE.Location = new System.Drawing.Point(1143, 38);
+            this.readE.Location = new System.Drawing.Point(368, 220);
             this.readE.MouseBack = null;
             this.readE.Name = "readE";
             this.readE.NormlBack = null;
@@ -293,22 +295,35 @@
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
             this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton1.DownBack = null;
-            this.skinButton1.Location = new System.Drawing.Point(711, 66);
+            this.skinButton1.Location = new System.Drawing.Point(295, 220);
             this.skinButton1.MouseBack = null;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
-            this.skinButton1.Size = new System.Drawing.Size(98, 23);
+            this.skinButton1.Size = new System.Drawing.Size(67, 23);
             this.skinButton1.TabIndex = 10010;
             this.skinButton1.Text = "读取data";
             this.skinButton1.UseVisualStyleBackColor = false;
             this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
+            // 
+            // skinLabel5
+            // 
+            this.skinLabel5.AutoSize = true;
+            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel5.BorderColor = System.Drawing.Color.White;
+            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel5.Location = new System.Drawing.Point(63, 584);
+            this.skinLabel5.Name = "skinLabel5";
+            this.skinLabel5.Size = new System.Drawing.Size(280, 17);
+            this.skinLabel5.TabIndex = 10011;
+            this.skinLabel5.Text = "例（UserId=fdhjkldsjfjdslk543;）分号结尾为一个\r\n";
             // 
             // zmain
             // 
             this.AcceptButton = this.but;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 727);
+            this.ClientSize = new System.Drawing.Size(1240, 781);
+            this.Controls.Add(this.skinLabel5);
             this.Controls.Add(this.skinButton1);
             this.Controls.Add(this.readE);
             this.Controls.Add(this.cBox);
@@ -334,6 +349,7 @@
             this.MaximizeBox = false;
             this.Name = "zmain";
             this.Text = "COO";
+            this.Load += new System.EventHandler(this.zmain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axWebBrowser1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -363,6 +379,7 @@
         private CCWin.SkinControl.SkinComboBox cBox;
         private CCWin.SkinControl.SkinButton readE;
         private CCWin.SkinControl.SkinButton skinButton1;
+        private CCWin.SkinControl.SkinLabel skinLabel5;
     }
 }
 
