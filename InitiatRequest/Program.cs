@@ -52,7 +52,7 @@ namespace InitiatRequest
             catch (Exception e)
             {
                 log4helper<Application>.Errror(e);
-                MessageBox.Show("出现异常！请查看日志");
+                MessageBox.Show($"出现异常！{e.Message}");
                 return; ;
             } 
         }

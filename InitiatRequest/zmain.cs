@@ -1,7 +1,9 @@
 ﻿using CCWin.SkinControl;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -43,25 +45,29 @@ namespace InitiatRequest
         [Error]//单独写捕获异常
         public void InitData()
         {
+            tb_json_text.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            tb_json_text.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tb_json_text.ScrollBars = ScrollBars.Vertical;
+
             xiangyin.Text = "代码敲不好，浑身都不好";
             formd.ReadOnly = true;
             action.TabIndex = 0;
             action.Focus();
 
-            cBox.SelectedValueChanged += (a, b)=>
+            cBox.SelectedValueChanged += (a, b) =>
             {
-                SkinComboBox box=(SkinComboBox)a;
-                action.Text=dor[box.Text];
+                SkinComboBox box = (SkinComboBox)a;
+                action.Text = dor[box.Text];
             };
 
-            readE.Click+= (a, e) => 
+            readE.Click += (a, e) =>
             {
                 // 读取Excel文件内容，就可以赋值给控件，控件下拉展示出来
                 dor = new fetchExcel().readexcel(AppDomain.CurrentDomain.BaseDirectory + "DataSouse.xlsx");
                 foreach (var item in dor)
                 {
                     if (!cBox.Items.Contains(item.Key))
-                       cBox.Items.Add(item.Key);
+                        cBox.Items.Add(item.Key);
                 }
                 if (dor.Count == 0)
                 {
@@ -78,11 +84,11 @@ namespace InitiatRequest
                 System.Diagnostics.Process.Start("explorer.exe", v_OpenFolderPath);
             };
 
-            webBrowser1.Navigate("http://www.ofmonkey.com/");
+            // webBrowser1.Navigate("http://www.ofmonkey.com/");
             //webBrowser1.ScriptErrorsSuppressed = true;
             bpost.Checked = true; //默认Post的
             accept.Text = "*/*";
-            contentType.Text = "application/x-www-form-urlencoded";
+            contentType.Text = "application/x-www-form-urlencoded;charset=UTF-8";
             //      but.Click += GetRequest(); //原始调用方法
             but.Click += (EventHandler)TypeTes.rexetype("zmain", model, "GetRequest");//反射调用方法
 
@@ -144,11 +150,21 @@ namespace InitiatRequest
             return text;
         }
 
+        public void SetlableText(string str)
+        {
+            string formattedJson = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(str), Formatting.Indented);
+            tb_json_text.Text = formattedJson;
+        }
+
+        public void SetlableText2(string str)
+        {
+            xiangyin.Text = str;
+        }
 
         [Error]
         public EventHandler GetRequest()
         {
-           xiangyin.Text = "响应中^^^^^^^^^^^^^^^^^^";
+            xiangyin.Text = "响应中^^^^^^^^^^^^^^^^^^";
             string ma = Thread.CurrentThread.ManagedThreadId.ToString();
             return (sender, e) =>
             {
@@ -164,7 +180,6 @@ namespace InitiatRequest
 
                 //！！！如果是Get请求，最好需要加入  x-requested-with: XMLHttpRequest
 
-
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(action.Text);
                 request.Method = selectres;
                 request.Accept = accept.Text;
@@ -173,9 +188,14 @@ namespace InitiatRequest
                 if (!string.IsNullOrEmpty(textBo_heads.Text))
                 {
                     string[] dataSouse = textBo_heads.Text.Split(';');
-                    foreach (var item in dataSouse)
-                        request.Headers.Add(item);
-                    request.Host = host.Text;
+                    foreach (var item in dataSouse.Where(aq => !string.IsNullOrWhiteSpace(aq)))
+                    {
+                        var ps = item.Split(':');
+                        request.Headers.Add(ps[0], ps[1]);
+                    }
+
+                    string domain = new Uri(action.Text).Host;
+                    request.Host = domain;
                 }
 
                 #region Cookies
@@ -200,7 +220,6 @@ namespace InitiatRequest
                 }
                 #endregion
 
-                var htmlelement = webBrowser1.Document.GetElementById("json_text");
                 Encoding encoding = Encoding.UTF8;
                 if (!string.IsNullOrEmpty(formd.Text) && "POST" == request.Method) //post请求时，使用的，否则get请求时，
                 {
@@ -210,8 +229,30 @@ namespace InitiatRequest
                     request.GetRequestStream().Write(buffer, 0, buffer.Length);  //Get请求-报错
                 }
 
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        var response = (HttpWebResponse)request.GetResponse();
+                        using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                        {
+                            Invoke(new Action<string>(SetlableText), reader.ReadToEnd());
+                            Invoke(new Action<string>(SetlableText2), "响应OK");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Invoke(new Action<string>(SetlableText), ex.Message);
+                        Invoke(new Action<string>(SetlableText2), "响应异常");
+
+                        // MessageBox.Show(ex.Message);
+                        Thread.CurrentThread.Abort(); //避免异常时，窗体退出，整个线程包括主线程退出。退出当前子线程
+                        // throw ex;
+                    }
+                });
+
                 // 异步请求，避免卡主线程
-                BenginAsyncCallback(request, htmlelement);
+                BenginAsyncCallback(request);
 
                 // 异步请求，避免卡主线程
                 //BenginEndInvoke(request, htmlelement);
@@ -276,7 +317,7 @@ namespace InitiatRequest
 
         private void BenginEndInvoke(HttpWebRequest request, HtmlElement htmlelement)
         {
-            var coll = webBrowser1.Document.GetElementsByTagName("button"); //再点击按钮格式化。这一句要放到外面，在异步的里面，报错
+            // var coll = webBrowser1.Document.GetElementsByTagName("button"); //再点击按钮格式化。这一句要放到外面，在异步的里面，报错
             Func<HttpWebResponse> func = () => (HttpWebResponse)request.GetResponse();
             //HttpWebResponse response = func.EndInvoke(null);             //写null的话，会导致error“ 异步结果对象为空或属于意外类型。”
             IAsyncResult asyncResult = func.BeginInvoke(back => { }, null);
@@ -290,21 +331,20 @@ namespace InitiatRequest
                     htmlelement.InnerHtml = "没有内容";
                     return;
                 }
-                foreach (HtmlElement item in coll)
-                {
-                    if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
-                    {
-                        item.InvokeMember("click");
-                        xiangyin.Text = "响应OK";
-                        return;
-                    }
-                }
+                //foreach (HtmlElement item in coll)
+                //{
+                //    if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
+                //    {
+                //        item.InvokeMember("click");
+                //        xiangyin.Text = "响应OK";
+                //        return;
+                //    }
+                //}
             }
         }
 
-        public void BenginAsyncCallback(HttpWebRequest request, HtmlElement htmlelement)
+        public void BenginAsyncCallback(HttpWebRequest request)
         {
-            var coll = webBrowser1.Document.GetElementsByTagName("button"); //再点击按钮格式化。这一句要放到外面，在异步的里面，报错
             Func<HttpWebResponse> func = () =>
               {
                   try
@@ -313,7 +353,7 @@ namespace InitiatRequest
                   }
                   catch (Exception ex)
                   {
-                      htmlelement.InnerHtml = ex.Message;
+                      tb_json_text.Text = ex.Message;
                       MessageBox.Show(ex.Message);
                       Thread.CurrentThread.Abort(); //避免异常时，窗体退出，整个线程包括主线程退出。退出当前子线程
                       throw ex;
@@ -324,21 +364,18 @@ namespace InitiatRequest
                 HttpWebResponse response = func.EndInvoke(okm);
                 using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                 {
-                    htmlelement.InnerHtml = reader.ReadToEnd(); //OuterText属性赋值后，没有效果
-                    if (string.IsNullOrEmpty(htmlelement.InnerHtml))
-                    {
-                        htmlelement.InnerHtml = "没有内容";
-                        return;
-                    }
-                    foreach (HtmlElement item in coll)
-                    {
-                        if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
-                        {
-                            item.InvokeMember("click");
-                            xiangyin.Text = "响应OK"; //这一句话，可以放到委托中的回调里面
-                            return;
-                        }
-                    }
+                    tb_json_text.Text = reader.ReadToEnd(); //OuterText属性赋值后，没有效果
+                    xiangyin.Text = "响应OK"; //这一句话，可以放到委托中的回调里面
+
+                    //foreach (HtmlElement item in coll)
+                    //{
+                    //    if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
+                    //    {
+                    //        item.InvokeMember("click");
+                    //        xiangyin.Text = "响应OK"; //这一句话，可以放到委托中的回调里面
+                    //        return;
+                    //    }
+                    //}
                 }
             };
             try
@@ -355,7 +392,6 @@ namespace InitiatRequest
 
         public void BenginTask(HttpWebRequest request, HtmlElement htmlelement)
         {
-            var coll = webBrowser1.Document.GetElementsByTagName("button"); //再点击按钮格式化
             Task task = Task.Run(() =>
              {
                  HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -367,15 +403,17 @@ namespace InitiatRequest
                          htmlelement.InnerHtml = "没有内容";
                          return;
                      }
-                     foreach (HtmlElement item in coll)
-                     {
-                         if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
-                         {
-                             item.InvokeMember("click");
-                             xiangyin.Text = "响应OK";
-                             return;
-                         }
-                     }
+
+                     xiangyin.Text = "响应OK";
+
+                     //foreach (HtmlElement item in coll)
+                     //{
+                     //    if (item.InnerText == "格式化")//if (item.GetAttribute("class") == "btn-primary") //没有找到
+                     //    {
+                     //        item.InvokeMember("click");
+                     //        return;
+                     //    }
+                     //}
                  }
              });
         }
@@ -387,7 +425,7 @@ namespace InitiatRequest
         /// <param name="e"></param>
         private void skinButton1_Click(object sender, EventArgs e)
         {
-            dor=new DataSend().readsqll();
+            dor = new DataSend().readsqll();
             foreach (var item in dor)
             {
                 if (!cBox.Items.Contains(item.Key))

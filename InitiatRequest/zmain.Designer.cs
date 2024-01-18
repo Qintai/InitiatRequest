@@ -48,11 +48,11 @@
             this.xiangyin = new CCWin.SkinControl.SkinLabel();
             this.skinButtonlog = new CCWin.SkinControl.SkinButton();
             this.cBox = new CCWin.SkinControl.SkinComboBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.axWebBrowser1 = new AxSHDocVw.AxWebBrowser();
             this.readE = new CCWin.SkinControl.SkinButton();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
+            this.tb_json_text = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.axWebBrowser1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             this.textBo_heads.Name = "textBo_heads";
             this.textBo_heads.Size = new System.Drawing.Size(335, 127);
             this.textBo_heads.TabIndex = 4;
-            this.textBo_heads.Text = "Cache-Control:no-cache; X-Requested-With:XMLHttpRequest;";
+            this.textBo_heads.Text = "Cache-Control:no-cache;X-Requested-With:XMLHttpRequest;";
             // 
             // but
             // 
@@ -260,14 +260,6 @@
             this.cBox.TabIndex = 10008;
             this.cBox.WaterText = "";
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(407, 35);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(813, 739);
-            this.webBrowser1.TabIndex = 10004;
-            // 
             // axWebBrowser1
             // 
             this.axWebBrowser1.Enabled = true;
@@ -317,19 +309,27 @@
             this.skinLabel5.TabIndex = 10011;
             this.skinLabel5.Text = "例（UserId=fdhjkldsjfjdslk543;）分号结尾为一个\r\n";
             // 
+            // tb_json_text
+            // 
+            this.tb_json_text.Location = new System.Drawing.Point(436, 54);
+            this.tb_json_text.Multiline = true;
+            this.tb_json_text.Name = "tb_json_text";
+            this.tb_json_text.Size = new System.Drawing.Size(775, 690);
+            this.tb_json_text.TabIndex = 10012;
+            // 
             // zmain
             // 
             this.AcceptButton = this.but;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 781);
+            this.Controls.Add(this.tb_json_text);
             this.Controls.Add(this.skinLabel5);
             this.Controls.Add(this.skinButton1);
             this.Controls.Add(this.readE);
             this.Controls.Add(this.cBox);
             this.Controls.Add(this.skinButtonlog);
             this.Controls.Add(this.xiangyin);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.axWebBrowser1);
             this.Controls.Add(this.action);
             this.Controls.Add(this.formd);
@@ -373,13 +373,13 @@
         private System.Windows.Forms.TextBox formd;
         private System.Windows.Forms.TextBox action;
         private AxSHDocVw.AxWebBrowser axWebBrowser1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private CCWin.SkinControl.SkinLabel xiangyin;
         private CCWin.SkinControl.SkinButton skinButtonlog;
         private CCWin.SkinControl.SkinComboBox cBox;
         private CCWin.SkinControl.SkinButton readE;
         private CCWin.SkinControl.SkinButton skinButton1;
         private CCWin.SkinControl.SkinLabel skinLabel5;
+        private System.Windows.Forms.TextBox tb_json_text;
     }
 }
 
